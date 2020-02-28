@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>8.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <NoWarn>1701;1702;RCS1029;RCS1139;RCS1057;RCS1036;CA1819</NoWarn>
+    <GitThisAssembly>false</GitThisAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Iconic.Zlib.Netstandard" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="$(SolutionDir)\Aragas.Network-2\src\Aragas.Network-2.Standard\Aragas.Network-2.csproj" Condition="Exists('$(SolutionDir)\Aragas.Network-2\src\Aragas.Network-2.Standard\Aragas.Network-2.csproj')"  />
+    <PackageReference Include="Aragas.Network-2" Version="[*,)" Condition="!Exists('$(SolutionDir)\Aragas.Network-2\src\Aragas.Network-2.Standard\Aragas.Network-2.csproj')"/>
+
+    <ProjectReference Include="$(SolutionDir)\Aragas.TupleEventSystem\src\Aragas.TupleEventSystem\Aragas.TupleEventSystem.csproj" Condition="Exists('$(SolutionDir)\Aragas.TupleEventSystem\src\Aragas.TupleEventSystem\Aragas.TupleEventSystem.csproj')"  />
+    <PackageReference Include="Aragas.TupleEventSystem" Version="[*,)" Condition="!Exists('$(SolutionDir)\Aragas.TupleEventSystem\src\Aragas.TupleEventSystem\Aragas.TupleEventSystem.csproj')"/>
+    
+    <ProjectReference Include="$(SolutionDir)\Aragas.QServer.Hosting\Aragas.QServer.Hosting.csproj" Condition="Exists('$(SolutionDir)\Aragas.QServer.Hosting\Aragas.QServer.Hosting.csproj')"  />
+    <PackageReference Include="Aragas.QServer.Hosting" Version="[*,)" Condition="!Exists('$(SolutionDir)\Aragas.QServer.Hosting\Aragas.QServer.Hosting.csproj')"/>
+  </ItemGroup>
+
+</Project>
