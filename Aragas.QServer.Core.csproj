@@ -6,6 +6,9 @@
     <Nullable>enable</Nullable>
     <NoWarn>1701;1702;RCS1029;RCS1139;RCS1057;RCS1036;CA1819</NoWarn>
     <GitThisAssembly>false</GitThisAssembly>
+    <RepositoryUrl>https://github.com/Aragas/Aragas.QServer.Core</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://github.com/Aragas/Aragas.QServer.Core</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
