@@ -2,14 +2,30 @@ name: NuGet
 
 on:
   push:
-    branches: 
+    branches:
       - master
   repository_dispatch:
     types:
-      - build
+      - build-from-external
 
 jobs:
-  build:  
+  build-from-push:
+    name: Requested by Push
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
+    - run: echo
+  build-from-external:
+    name: Requested by ${{github.event.client_payload.github.repository}}
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'repository_dispatch'
+    steps:
+    - run: echo
+        
+  build:
+    name: Publish to GPR
     runs-on: ubuntu-latest
     steps:
 
