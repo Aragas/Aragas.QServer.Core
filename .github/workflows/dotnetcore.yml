@@ -1,14 +1,19 @@
 name: NuGet
 
-on: [push]
+on:
+  push:
+    branches: 
+      - master
+  repository_dispatch:
+    types:
+      - build
 
 jobs:
-  build:
-  
+  build:  
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
+
+    - name: Checkout Repository
       uses: actions/checkout@v2
       
     - name: Setup .NET Core
@@ -19,13 +24,13 @@ jobs:
       env:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-    - name: Build
+    - name: Build (Release)
       run: dotnet build --configuration Release
       
-    - name: Pack
+    - name: Pack (Release)
       run: dotnet pack --configuration Release -o "./packages"
       
-#    - name: Publish
+#    - name: Publish (Release)
 #      run: dotnet nuget push packages/*.nupkg
 
     - name: Publish (workaround)
